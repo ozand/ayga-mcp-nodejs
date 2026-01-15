@@ -1,0 +1,58 @@
+{
+  "name": "@ayga/mcp-client",
+  "version": "2.0.0",
+  "description": "MCP client for Redis API with 40 AI parsers across 9 categories (Perplexity, ChatGPT, Instagram, TikTok, Google Trends, Pinterest, Link Extractor, YouTube, Translation, Search Engines)",
+  "keywords": [
+    "mcp",
+    "model-context-protocol",
+    "redis",
+    "ai-parsers",
+    "perplexity",
+    "chatgpt",
+    "claude",
+    "instagram",
+    "tiktok",
+    "youtube",
+    "google-trends",
+    "pinterest",
+    "translation"
+  ],
+  "author": "Ayga <https://ayga.tech>",
+  "license": "MIT",
+  "homepage": "https://github.com/ozand/ayga-mcp-nodejs#readme",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ozand/ayga-mcp-nodejs.git"
+  },
+  "bugs": {
+    "url": "https://github.com/ozand/ayga-mcp-nodejs/issues"
+  },
+  "main": "dist/index.js",
+  "type": "module",
+  "bin": {
+    "ayga-mcp-client": "dist/index.js"
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsx src/index.ts",
+    "test": "tsx src/test.ts",
+    "prepublishOnly": "npm run build",
+    "clean": "rm -rf dist"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.0.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.0.0",
+    "tsx": "^4.0.0",
+    "typescript": "^5.3.0"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}

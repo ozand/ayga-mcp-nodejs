@@ -1,0 +1,13 @@
+{
+  "mcpServers": {
+    "ayga-nodejs": {
+      "command": "node",
+      "args": [
+        "T:/Code/python/A-PARSER/ayga-mcp-nodejs/dist/index.js"
+      ],
+      "env": {
+        "REDIS_API_KEY": "your-api-key-here"
+      }
+    }
+  }
+}
