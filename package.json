@@ -22,7 +22,7 @@
   "homepage": "https://github.com/ozand/ayga-mcp-nodejs#readme",
   "repository": {
     "type": "git",
-    "url": "https://github.com/ozand/ayga-mcp-nodejs.git"
+    "url": "git+https://github.com/ozand/ayga-mcp-nodejs.git"
   },
   "bugs": {
     "url": "https://github.com/ozand/ayga-mcp-nodejs/issues"
