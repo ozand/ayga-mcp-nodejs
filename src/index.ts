@@ -6,11 +6,15 @@ import {
     CallToolRequestSchema,
     ListToolsRequestSchema,
 } from "@modelcontextprotocol/sdk/types.js";
-import { PARSERS, getParserById } from "./parsers.js";
+import { PARSERS as STATIC_PARSERS, type ParserConfig } from "./parsers.js";
+import { ParserRegistry, getRegistry } from "./parser-registry.js";
 
 // Configuration
 const API_URL = process.env.API_URL || "https://redis.ayga.tech";
 const API_KEY = process.env.REDIS_API_KEY;
+
+// Dynamic parser loading (set DYNAMIC_PARSERS=false to disable)
+const ENABLE_DYNAMIC = process.env.DYNAMIC_PARSERS !== "false";
 
 interface TaskResult {
     success: number;
@@ -23,12 +27,13 @@ class AygaMCPServer {
     private server: Server;
     private jwtToken?: string;
     private tokenExpiry?: number;
+    private registry: ParserRegistry;
 
     constructor() {
         this.server = new Server(
             {
                 name: "ayga-mcp-client",
-                version: "2.0.0",
+                version: "2.1.0",
             },
             {
                 capabilities: {
@@ -36,6 +41,12 @@ class AygaMCPServer {
                 },
             }
         );
+
+        this.registry = getRegistry({
+            apiUrl: API_URL,
+            apiKey: API_KEY,
+            enableDynamic: ENABLE_DYNAMIC,
+        });
 
         this.setupHandlers();
         this.setupErrorHandlers();
@@ -90,7 +101,7 @@ class AygaMCPServer {
         query: string,
         timeout: number = 60
     ): Promise<TaskResult> {
-        const parser = getParserById(parserId);
+        const parser = await this.registry.getParserById(parserId);
         if (!parser) {
             throw new Error(`Unknown parser: ${parserId}`);
         }
@@ -189,9 +200,11 @@ class AygaMCPServer {
     }
 
     private setupHandlers() {
-        // List available tools
+        // List available tools (dynamic)
         this.server.setRequestHandler(ListToolsRequestSchema, async () => {
-            const tools: any[] = PARSERS.map((parser) => ({
+            const parsers = await this.registry.getParsers();
+            
+            const tools: any[] = parsers.map((parser) => ({
                 name: `search_${parser.id}`,
                 description: `${parser.description} (Category: ${parser.category})`,
                 inputSchema: {
@@ -234,13 +247,13 @@ class AygaMCPServer {
                 // Handle list_parsers tool
                 if (name === "list_parsers") {
                     const category = args?.category as string | undefined;
-                    let parsers = PARSERS;
+                    let parsers = await this.registry.getParsers();
 
                     if (category) {
-                        parsers = PARSERS.filter((p) => p.category === category);
+                        parsers = parsers.filter((p) => p.category === category);
                     }
 
-                    const categories = [...new Set(PARSERS.map((p) => p.category))];
+                    const categories = await this.registry.getCategories();
                     const result = {
                         total: parsers.length,
                         categories: categories,
@@ -333,9 +346,13 @@ class AygaMCPServer {
         const transport = new StdioServerTransport();
         await this.server.connect(transport);
 
-        this.log("Ayga MCP Server v2.0.0 started");
+        // Pre-fetch parsers
+        const parsers = await this.registry.getParsers();
+
+        this.log("Ayga MCP Server v2.1.0 started");
         this.log(`API URL: ${API_URL}`);
-        this.log(`Total parsers: ${PARSERS.length}`);
+        this.log(`Dynamic loading: ${ENABLE_DYNAMIC ? "enabled" : "disabled"}`);
+        this.log(`Total parsers: ${parsers.length}`);
         this.log("Server ready on stdio transport");
     }
 }
