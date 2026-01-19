@@ -1,22 +1,22 @@
 # VS Code MCP Configuration Example (mcp.json)
 # Copy this to: %APPDATA%\Code\User\mcp.json
+#
+# API Key Format: ayga_live_xxxxxx (get from @aygamcp_bot on Telegram)
 
 {
   "inputs": [
     {
       "id": "REDIS_API_KEY",
       "type": "promptString",
-      "description": "ayga-mcp-client Redis API key",
+      "description": "Ayga API key (format: ayga_live_xxx). Get from @aygamcp_bot",
       "password": true
     }
   ],
   "servers": {
-    "ayga-nodejs": {
+    "ayga": {
       "type": "stdio",
-      "command": "node",
-      "args": [
-        "T:/Code/python/A-PARSER/ayga-mcp-nodejs/dist/index.js"
-      ],
+      "command": "npx",
+      "args": ["@ayga/mcp-client@latest"],
       "env": {
         "REDIS_API_KEY": "${input:REDIS_API_KEY}"
       }

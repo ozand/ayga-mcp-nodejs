@@ -1,7 +1,7 @@
 {
   "name": "@ayga/mcp-client",
-  "version": "2.1.0",
-  "description": "MCP client for Redis API with 40 AI parsers across 9 categories (Perplexity, ChatGPT, Instagram, TikTok, Google Trends, Pinterest, Link Extractor, YouTube, Translation, Search Engines)",
+  "version": "3.2.0",
+  "description": "MCP client with 6 consolidated AI tools - stateless X-API-Key auth, no JWT exchange needed",
   "keywords": [
     "mcp",
     "model-context-protocol",
