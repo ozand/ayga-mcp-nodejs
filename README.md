@@ -1,4 +1,4 @@
-# Ayga MCP Client (Node.js) v3.2.0
+# Ayga MCP Client (Node.js) v3.3.0
 
 > **Paid Service**: This is a paid Ayga service. Get your API key at [@aygamcp_bot](https://t.me/aygamcp_bot).
 
@@ -79,8 +79,8 @@ search_web query="latest AI news"
 get_video query="Python tutorials"
 
 # With specific engine
-ask_ai query="Explain transformers" engine="claude"
-search_web query="weather" engine="duckduckgo"
+ask_ai query="Explain transformers" engine="chatgpt"
+search_web query="weather" engine="duckduckgo_search"
 
 # Check your rate limits
 ayga_check_limits _placeholder=true
@@ -119,11 +119,11 @@ ayga_check_limits _placeholder=true
 
 | Tool | Engines |
 |------|---------|
-| `ask_ai` | perplexity, chatgpt, claude, gemini, copilot, grok, deepseek, deepai |
-| `search_web` | google_search, bing_search, duckduckgo, yandex_search, google_trends |
-| `get_video` | youtube_search, youtube_video, youtube_comments, youtube_channel_videos |
-| `get_social` | instagram_profile, instagram_post, tiktok_profile, pinterest_search, reddit_posts |
-| `translate` | google_translate, bing_translate, yandex_translate |
+| `ask_ai` | perplexity, googleai, chatgpt, kimi, deepai, copilot |
+| `search_web` | google_search, bing_search, duckduckgo_search, yandex_search, baidu_search, yahoo_search, rambler_search, you_search, google_trends |
+| `get_video` | youtube_search, youtube_video, youtube_suggest, youtube_comments, youtube_channel_videos, youtube_channel_about |
+| `get_social` | instagram_profile, instagram_post, instagram_tag, instagram_geo, instagram_search, tiktok_profile, reddit_posts, reddit_post_info, reddit_comments, telegram_group, pinterest_search |
+| `translate` | google_translate, deepl_translate, bing_translate, yandex_translate |
 | `extract` | text_extractor, article_extractor, link_extractor |
 
 ## Support
