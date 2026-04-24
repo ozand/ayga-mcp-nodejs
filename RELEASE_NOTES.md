@@ -1,4 +1,10 @@
-# Ayga MCP Client v2.0.0 - Node.js Release
+# Ayga MCP Client Release Notes
+
+> Current package metadata version: **v3.3.0** (see `package.json`).
+>
+> This document captures the historical **v2.0.0** Node.js launch release.
+
+## Ayga MCP Client v2.0.0 - Node.js Release
 
 We're excited to announce **ayga-mcp-client v2.0.0** - a complete Node.js/TypeScript rewrite!
 

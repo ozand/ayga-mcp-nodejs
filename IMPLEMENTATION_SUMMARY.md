@@ -1,5 +1,9 @@
 # 🎉 Ayga MCP Client - Node.js Implementation Complete!
 
+> Current package metadata version: **v3.3.0** (see `package.json`).
+>
+> This implementation summary documents the historical Node.js launch milestone around **v2.0.0**.
+
 ## ✅ Что сделано
 
 ### 1. Полная Node.js/TypeScript реализация

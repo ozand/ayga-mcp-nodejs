@@ -1,5 +1,9 @@
 # npm Publish Instructions
 
+> Current package metadata version: **v3.3.0** (from `package.json`).
+>
+> Version `v2.0.0` references in this file are historical examples from the initial Node.js release process.
+
 ## Prerequisites
 
 1. **npm account**: https://www.npmjs.com/signup
@@ -16,7 +20,7 @@
 - [x] LICENSE file exists (MIT)
 - [x] .gitignore excludes node_modules and dist from npm
 - [x] GitHub repository created: https://github.com/ozand/ayga-mcp-nodejs
-- [x] GitHub release v2.0.0 published
+- [x] GitHub release v2.0.0 published (historical)
 
 ## Publishing Steps
 
@@ -34,7 +38,7 @@ npm login
 npm publish --dry-run
 
 # Expected output:
-# @ayga/mcp-client@2.0.0
+# @ayga/mcp-client@3.3.0
 # - dist/
 # - README.md
 # - LICENSE
@@ -49,7 +53,7 @@ npm publish --access public
 
 **Expected result**:
 ```
-+ @ayga/mcp-client@2.0.0
++ @ayga/mcp-client@3.3.0
 ✓ Package published successfully
 View at: https://www.npmjs.com/package/@ayga/mcp-client
 ```
@@ -121,7 +125,7 @@ npm publish
 ## Current Status
 
 ✅ GitHub repository: https://github.com/ozand/ayga-mcp-nodejs
-✅ GitHub release v2.0.0: https://github.com/ozand/ayga-mcp-nodejs/releases/tag/v2.0.0
+✅ GitHub release v2.0.0 (historical): https://github.com/ozand/ayga-mcp-nodejs/releases/tag/v2.0.0
 ⏳ npm package: Awaiting publication
 
 **Ready to publish!** Run: `npm publish --access public`
