@@ -93,6 +93,15 @@ ayga_check_limits _placeholder=true
 | `REDIS_API_KEY` | Yes | - |
 | `API_URL` | No | https://redis.ayga.tech |
 
+## Minimal Release Verification Checklist
+
+Before any release-related commit or publish action:
+
+- Confirm version values are in sync across `package.json`, `package-lock.json`, and `README.md`.
+- Run `npm test` and verify it passes.
+- Verify `git status --short --branch` is clean and tracks `origin/main`.
+- Do not publish from a dirty working tree.
+
 ## Architecture
 
 ```
